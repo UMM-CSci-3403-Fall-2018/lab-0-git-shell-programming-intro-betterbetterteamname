@@ -1,13 +1,14 @@
 #!/bin/bash
 file="$1"
+filebase="${file%.*}"
 directory="$2"
 here=$(pwd)
-mkdir $directory
+mkdir -p $directory
 tar -xf $file -C $directory
-cd $directory
-for filename in $directory; do
-	if grep -Fxq "DELETE ME!" "$filename"; then
-		rm filename
+cd $directory/$filebase
+for filename in *; do
+	if grep "DELETE ME!" $filename; then
+		rm -f $filename
 	fi
 done
 
