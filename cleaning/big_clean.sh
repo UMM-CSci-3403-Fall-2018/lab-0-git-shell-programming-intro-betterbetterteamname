@@ -9,8 +9,10 @@ cd $directory/$filebase
 for filename in *; do
 	if grep "DELETE ME!" $filename; then
 		rm -f $filename
-	fi
+	fi	
 done
+cd ..
+tar -zcf $here/cleaned_$file *
 
 
 
